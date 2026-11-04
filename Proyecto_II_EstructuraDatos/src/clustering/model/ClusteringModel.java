@@ -21,6 +21,7 @@ public class ClusteringModel {
     private HierarchicalClustering clustering;
     private MyTreeNode displayedRoot;
     private boolean vectorized;
+    private boolean nameColumnWasIgnored;
 
     public void loadCsv(String path) throws IOException {
         processor.loadCsv(path);
@@ -30,6 +31,7 @@ public class ClusteringModel {
         cfg.setColumns(settings);
         int nameColumn = guessNameColumn();
         cfg.setNameColumnIndex(nameColumn);
+        nameColumnWasIgnored = settings.get(nameColumn).isIgnored();
         settings.get(nameColumn).setIgnored(true);
         processor.applyNameColumn(nameColumn);
         clustering = null;
@@ -46,12 +48,50 @@ public class ClusteringModel {
         return 0;
     }
 
+
     public void setNameColumn(int column) {
+        // Obtener la configuración general del programa
         Configuration cfg = Configuration.getInstance();
+
+        // Obtener la lista de columnas del CSV
+        MyList<ColumnSetting> columns = cfg.getColumns();
+
+        // Verificar que la columna seleccionada exista
+        if (column < 0 || column >= columns.size()) {
+            throw new IllegalArgumentException("La columna seleccionada no existe");
+        }
+
+        // Guardar el índice de la columna anterior
+        int previous = cfg.getNameColumnIndex();
+
+        // Si seleccionamos la misma columna, no hacemos cambios
+        if (column == previous) {
+            return;
+        }
+
+        // Restaurar el estado de la columna anterior
+        if (previous >= 0 && previous < columns.size()) {
+            columns.get(previous).setIgnored(nameColumnWasIgnored);
+        }
+
+        // Guardar el estado original de la nueva columna
+        nameColumnWasIgnored = columns.get(column).isIgnored();
+
+        // Ignorar la columna que contiene los nombres
+        columns.get(column).setIgnored(true);
+
+        // Actualizar la configuración
         cfg.setNameColumnIndex(column);
-        cfg.getColumns().get(column).setIgnored(true);
+
+        // Actualizar los nombres de los elementos
         processor.applyNameColumn(column);
+
+        // Invalidar los resultados anteriores
+        vectorized = false;
+        clustering = null;
+        displayedRoot = null;
     }
+
 
     public void configureStrategies(String normalizationType, String distanceType) {
         Configuration cfg = Configuration.getInstance();

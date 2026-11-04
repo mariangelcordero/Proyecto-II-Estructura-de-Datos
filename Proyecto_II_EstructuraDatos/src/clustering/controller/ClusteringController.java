@@ -13,6 +13,7 @@ public class ClusteringController {
     private final ClusteringModel model;
     private MainFrame view;
 
+
     public ClusteringController(ClusteringModel model) { this.model = model; }
 
     public void start() {
