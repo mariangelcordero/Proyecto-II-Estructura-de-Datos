@@ -1,8 +1,8 @@
 package clustering.model.structures;
 
-/** Pila (LIFO) construida por composición sobre {@link MyLinkedList}. */
+/** Pila (LIFO) construida por composición sobre {@link ListaLinqueada}. */
 public class MyStack<T> {
-    private final MyLinkedList<T> list = new MyLinkedList<>();
+    private final ListaLinqueada<T> list = new ListaLinqueada<>();
 
     public void push(T value) { list.addFirst(value); }
 

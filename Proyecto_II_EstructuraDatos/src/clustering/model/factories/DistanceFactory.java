@@ -1,18 +1,18 @@
 package clustering.model.factories;
 
-import clustering.model.strategies.DistanceStrategy;
-import clustering.model.strategies.distance.CosineDistance;
-import clustering.model.strategies.distance.EuclideanDistance;
-import clustering.model.strategies.distance.HammingDistance;
-import clustering.model.strategies.distance.ManhattanDistance;
+import clustering.model.strategies.DistanciaStrategy;
+import clustering.model.strategies.distance.DistanciaCoseno;
+import clustering.model.strategies.distance.DistanciaEuclidiana;
+import clustering.model.strategies.distance.DistanciaHamming;
+import clustering.model.strategies.distance.DistanciaManhattan;
 
-public class DistanceFactory implements StrategyFactory<DistanceStrategy> {
-    @Override public DistanceStrategy create(String type) {
+public class DistanceFactory implements StrategyFactory<DistanciaStrategy> {
+    @Override public DistanciaStrategy create(String type) {
         switch (type.trim().toLowerCase()) {
-            case "euclidean": return new EuclideanDistance();
-            case "manhattan": return new ManhattanDistance();
-            case "cosine": return new CosineDistance();
-            case "hamming": return new HammingDistance();
+            case "euclidean": return new DistanciaEuclidiana();
+            case "manhattan": return new DistanciaManhattan();
+            case "cosine": return new DistanciaCoseno();
+            case "hamming": return new DistanciaHamming();
             default: throw new IllegalArgumentException("Distancia desconocida: " + type);
         }
     }

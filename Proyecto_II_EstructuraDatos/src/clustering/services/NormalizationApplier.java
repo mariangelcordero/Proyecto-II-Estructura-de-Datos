@@ -1,13 +1,13 @@
 package clustering.services;
 
-import clustering.model.strategies.NormalizationStrategy;
+import clustering.model.strategies.NormalizacionStrategy;
 import clustering.model.structures.MyMatrix;
 
 /** Aplica una estrategia de normalización columna por columna y luego los pesos (v_i = w * f(x_i)). */
 final class NormalizationApplier {
     private NormalizationApplier() { }
 
-    static void apply(NormalizationStrategy strategy, MyMatrix matrix, double[] weights) {
+    static void apply(NormalizacionStrategy strategy, MyMatrix matrix, double[] weights) {
         int rows = matrix.rows();
         for (int c = 0; c < matrix.columns(); c++) {
             double[] column = new double[rows];

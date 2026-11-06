@@ -5,7 +5,6 @@ import clustering.model.entities.ColumnType;
 import clustering.model.structures.MyList;
 import javax.swing.table.AbstractTableModel;
 
-/** Tabla editable: tipo, ignorar y peso de cada variable. Edita directamente los ColumnSetting del modelo. */
 public class ColumnTableModel extends AbstractTableModel {
     private static final String[] NAMES = { "Variable", "Tipo", "Ignorar", "Peso" };
     private MyList<ColumnSetting> settings = new MyList<>();

@@ -8,7 +8,6 @@ import clustering.model.structures.MyTreeNode;
 import clustering.view.MainFrame;
 import javax.swing.SwingUtilities;
 
-/** Controlador (MVC): traduce los eventos de la ventana en operaciones del modelo y actualiza la vista. */
 public class ClusteringController {
     private final ClusteringModel model;
     private MainFrame view;

@@ -3,7 +3,6 @@ package clustering.model.iterators;
 import clustering.model.structures.MyStack;
 import clustering.model.structures.MyTreeNode;
 
-/** Entrega las hojas de izquierda a derecha, de forma perezosa e iterativa. */
 public class TreeLeafIterator implements MyIterator<MyTreeNode> {
     private final MyTreeNode root;
     private MyStack<MyTreeNode> stack;

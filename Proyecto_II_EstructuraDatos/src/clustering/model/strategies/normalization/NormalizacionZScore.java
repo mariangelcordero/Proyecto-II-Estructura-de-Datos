@@ -1,9 +1,8 @@
 package clustering.model.strategies.normalization;
 
-import clustering.model.strategies.NormalizationStrategy;
+import clustering.model.strategies.NormalizacionStrategy;
 
-/** f(x) = (x - μ) / σ con desviación estándar muestral. Columna constante -> 0. */
-public class ZScoreNormalization implements NormalizationStrategy {
+public class NormalizacionZScore implements NormalizacionStrategy {
     @Override public double[] normalizeColumn(double[] values) {
         int n = values.length;
         double[] result = new double[n];

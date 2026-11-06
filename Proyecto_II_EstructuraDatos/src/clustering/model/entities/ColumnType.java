@@ -1,6 +1,5 @@
 package clustering.model.entities;
 
-/** Tipo de variable y forma de vectorizarla. */
 public enum ColumnType {
     NUMERIC("Numérico"),
     CATEGORICAL("Categórico (one-hot)"),

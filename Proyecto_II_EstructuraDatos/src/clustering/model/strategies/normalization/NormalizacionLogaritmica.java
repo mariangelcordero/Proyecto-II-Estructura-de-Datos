@@ -1,9 +1,8 @@
 package clustering.model.strategies.normalization;
 
-import clustering.model.strategies.NormalizationStrategy;
+import clustering.model.strategies.NormalizacionStrategy;
 
-/** f(x) = ln(x + 1). Valores menores o iguales a -1 se acotan para evitar un logaritmo indefinido. */
-public class LogarithmicNormalization implements NormalizationStrategy {
+public class NormalizacionLogaritmica implements NormalizacionStrategy {
 
     @Override public double[] normalizeColumn(double[] values) {
         double[] result = new double[values.length];

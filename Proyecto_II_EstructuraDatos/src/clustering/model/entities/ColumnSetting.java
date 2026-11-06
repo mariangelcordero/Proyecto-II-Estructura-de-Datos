@@ -1,6 +1,5 @@
 package clustering.model.entities;
 
-/** Configuración editable de una variable (columna del CSV). */
 public class ColumnSetting {
     private final String name;
     private ColumnType type;

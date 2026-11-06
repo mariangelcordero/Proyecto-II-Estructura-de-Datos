@@ -1,7 +1,6 @@
 package clustering.model.structures;
 
-/** Tabla hash con claves String y encadenamiento. put/get/containsKey: O(1) promedio; rehash al superar 0.75. */
-public class MyHashMap<V> {
+public class MapaHash<V> {
     private static class Entry<E> {
         final String key;
         E value;
@@ -13,7 +12,7 @@ public class MyHashMap<V> {
     private int size;
 
     @SuppressWarnings("unchecked")
-    public MyHashMap() { buckets = (Entry<V>[]) new Entry[16]; }
+    public MapaHash() { buckets = (Entry<V>[]) new Entry[16]; }
 
     private int indexFor(String key, int capacity) {
         int hash = 0;

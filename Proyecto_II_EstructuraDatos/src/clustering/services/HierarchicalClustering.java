@@ -1,7 +1,7 @@
 package clustering.services;
 
 import clustering.model.entities.DataPoint;
-import clustering.model.strategies.DistanceStrategy;
+import clustering.model.strategies.DistanciaStrategy;
 import clustering.model.structures.MyList;
 import clustering.model.structures.MyMatrix;
 import clustering.model.structures.MyTreeNode;
@@ -13,11 +13,11 @@ import clustering.model.structures.MyTreeNode;
  */
 public class HierarchicalClustering {
     private final MyList<DataPoint> dataPoints;
-    private final DistanceStrategy strategy;
+    private final DistanciaStrategy strategy;
     private MyMatrix distances;
     private MyTreeNode root;
 
-    public HierarchicalClustering(MyList<DataPoint> dataPoints, DistanceStrategy strategy) {
+    public HierarchicalClustering(MyList<DataPoint> dataPoints, DistanciaStrategy strategy) {
         if (dataPoints == null || dataPoints.isEmpty()) throw new IllegalArgumentException("No hay datos para agrupar");
         if (strategy == null) throw new IllegalArgumentException("Seleccione una función de distancia");
         this.dataPoints = dataPoints;
