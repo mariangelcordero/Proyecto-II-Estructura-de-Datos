@@ -7,7 +7,7 @@ import clustering.model.entities.DataPoint;
 import clustering.model.iterators.MyIterable;
 import clustering.model.iterators.MyIterator;
 import clustering.model.iterators.MyListIterator;
-import clustering.model.structures.MyHashMap;
+import clustering.model.structures.MapaHash;
 import clustering.model.structures.MyList;
 import clustering.model.structures.MyMatrix;
 import clustering.model.structures.MyVector;
@@ -26,7 +26,7 @@ public class DataProcessor implements MyIterable<DataPoint> {
         double weight;
         int offset;
         int dims;
-        MyHashMap<Integer> indexByValue;
+        MapaHash<Integer> indexByValue;
     }
 
     /** Lee el CSV. Se descartan columnas sin encabezado. O(filas*columnas). */
@@ -61,8 +61,8 @@ public class DataProcessor implements MyIterable<DataPoint> {
         MyList<ColumnSetting> settings = new MyList<>();
         for (int j = 0; j < headers.size(); j++) {
             boolean allNumeric = true, anyValue = false, anySpace = false;
-            MyHashMap<Boolean> distinctValues = new MyHashMap<>();
-            MyHashMap<Boolean> distinctTokens = new MyHashMap<>();
+            MapaHash<Boolean> distinctValues = new MapaHash<>();
+            MapaHash<Boolean> distinctTokens = new MapaHash<>();
             for (int i = 0; i < dataPoints.size(); i++) {
                 String v = dataPoints.get(i).getRawValue(j);
                 if (v.isEmpty()) continue;
@@ -118,7 +118,7 @@ public class DataProcessor implements MyIterable<DataPoint> {
                 dimensionLabels.add(setting.getName());
             } else {
                 MyList<String> categories = collectCategories(j, plan.type == ColumnType.MULTI_VALUE);
-                plan.indexByValue = new MyHashMap<>();
+                plan.indexByValue = new MapaHash<>();
                 for (int c = 0; c < categories.size(); c++) {
                     plan.indexByValue.put(categories.get(c), c);
                     dimensionLabels.add(setting.getName() + "=" + categories.get(c));
@@ -147,7 +147,7 @@ public class DataProcessor implements MyIterable<DataPoint> {
     }
 
     private MyList<String> collectCategories(int column, boolean multiValue) {
-        MyHashMap<Boolean> seen = new MyHashMap<>();
+        MapaHash<Boolean> seen = new MapaHash<>();
         MyList<String> categories = new MyList<>();
         for (int i = 0; i < dataPoints.size(); i++) {
             String v = dataPoints.get(i).getRawValue(column);
@@ -163,7 +163,7 @@ public class DataProcessor implements MyIterable<DataPoint> {
         return categories;
     }
 
-    private void addIfNew(MyHashMap<Boolean> seen, MyList<String> list, String value) {
+    private void addIfNew(MapaHash<Boolean> seen, MyList<String> list, String value) {
         if (!seen.containsKey(value)) { seen.put(value, true); list.add(value); }
     }
 

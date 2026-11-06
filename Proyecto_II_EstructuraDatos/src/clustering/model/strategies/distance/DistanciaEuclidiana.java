@@ -1,10 +1,10 @@
 package clustering.model.strategies.distance;
 
 import clustering.model.iterators.MyIterator;
-import clustering.model.strategies.DistanceStrategy;
+import clustering.model.strategies.DistanciaStrategy;
 import clustering.model.structures.MyVector;
 
-public class EuclideanDistance implements DistanceStrategy {
+public class DistanciaEuclidiana implements DistanciaStrategy {
     @Override public double calculate(MyVector a, MyVector b) {
         if (a.size() != b.size()) throw new IllegalArgumentException("Los vectores deben tener el mismo tamaño");
         double sum = 0;

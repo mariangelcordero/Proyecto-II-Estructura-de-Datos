@@ -12,7 +12,6 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import javax.swing.JPanel;
 
-/** Dibuja el dendrograma horizontal: raíz a la izquierda, hojas a la derecha, eje de distancia abajo. */
 public class DendrogramPanel extends JPanel {
     private static final int ROW_HEIGHT = 24;
     private static final int MARGIN_TOP = 30;

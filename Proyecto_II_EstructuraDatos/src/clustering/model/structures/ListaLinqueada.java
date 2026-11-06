@@ -1,7 +1,6 @@
 package clustering.model.structures;
 
-/** Lista simplemente enlazada con referencia a cabeza y cola. addFirst/addLast/removeFirst: O(1). */
-public class MyLinkedList<T> {
+public class ListaLinqueada<T> {
     private static class Node<E> {
         final E value;
         Node<E> next;

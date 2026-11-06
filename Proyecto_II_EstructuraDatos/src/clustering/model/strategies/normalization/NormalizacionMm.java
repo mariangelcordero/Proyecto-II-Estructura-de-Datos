@@ -1,9 +1,8 @@
 package clustering.model.strategies.normalization;
 
-import clustering.model.strategies.NormalizationStrategy;
+import clustering.model.strategies.NormalizacionStrategy;
 
-/** f(x) = (x - min) / (max - min). Rango [0,1]. Columna constante -> 0. */
-public class MinMaxNormalization implements NormalizationStrategy {
+public class NormalizacionMm implements NormalizacionStrategy {
     @Override public double[] normalizeColumn(double[] values) {
         double min = values[0], max = values[0];
         for (double v : values) {

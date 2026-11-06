@@ -3,7 +3,6 @@ package clustering.model.iterators;
 import clustering.model.structures.MyStack;
 import clustering.model.structures.MyTreeNode;
 
-/** Recorrido preorden iterativo (usa pila propia, sin recursión). */
 public class TreePreOrderIterator implements MyIterator<MyTreeNode> {
     private final MyTreeNode root;
     private MyStack<MyTreeNode> stack;
