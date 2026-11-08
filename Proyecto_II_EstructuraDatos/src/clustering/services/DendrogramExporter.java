@@ -8,10 +8,6 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 
-/**
- * Exporta el árbol a JSON: { "n": nombre, "d": distancia, "c": [hijos] }.
- * Cada nodo lista las hojas que contiene; O(n) por nodo -> O(n * profundidad) en total.
- */
 public class DendrogramExporter {
     public void export(MyTreeNode root, String path) throws IOException {
         try (Writer writer = new OutputStreamWriter(new FileOutputStream(path), StandardCharsets.UTF_8)) {

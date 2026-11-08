@@ -3,7 +3,6 @@ package clustering.services;
 import clustering.model.strategies.NormalizacionStrategy;
 import clustering.model.structures.MyMatrix;
 
-/** Aplica una estrategia de normalización columna por columna y luego los pesos (v_i = w * f(x_i)). */
 final class NormalizationApplier {
     private NormalizationApplier() { }
 

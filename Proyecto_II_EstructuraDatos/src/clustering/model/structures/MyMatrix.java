@@ -4,7 +4,6 @@ import clustering.model.iterators.MatrixRowIterator;
 import clustering.model.iterators.MyIterable;
 import clustering.model.iterators.MyIterator;
 
-/** Matriz densa de doubles (filas x columnas). Memoria O(filas*columnas). */
 public class MyMatrix implements MyIterable<double[]> {
     private final double[][] data;
     private final int rows;

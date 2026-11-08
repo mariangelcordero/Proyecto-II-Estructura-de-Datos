@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
-/** Lector JSON propio (descenso recursivo) para el formato { "n", "d", "c" }. O(longitud del archivo). */
 public class DendrogramReader {
     private String text;
     private int pos;

@@ -4,7 +4,6 @@ import clustering.model.iterators.MyIterable;
 import clustering.model.iterators.MyIterator;
 import clustering.model.iterators.MyListIterator;
 
-/** Lista dinámica sobre arreglo (capacidad duplicada al llenarse). add: O(1) amortizado, get/set: O(1). */
 public class MyList<T> implements MyIterable<T> {
     private Object[] items = new Object[10];
     private int size;

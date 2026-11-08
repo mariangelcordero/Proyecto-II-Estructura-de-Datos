@@ -1,6 +1,5 @@
 package clustering.model.structures;
 
-/** Pila (LIFO) construida por composición sobre {@link ListaLinqueada}. */
 public class MyStack<T> {
     private final ListaLinqueada<T> list = new ListaLinqueada<>();
 

@@ -5,7 +5,6 @@ import clustering.model.iterators.MyIterator;
 import clustering.model.iterators.TreeLeafIterator;
 import clustering.model.iterators.TreePreOrderIterator;
 
-/** Nodo de árbol binario del dendrograma. Las hojas llevan etiqueta; los nodos internos, distancia de fusión. */
 public class MyTreeNode implements MyIterable<MyTreeNode> {
     private final int id;
     private final String label;

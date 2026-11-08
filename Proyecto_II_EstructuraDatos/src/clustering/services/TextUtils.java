@@ -2,11 +2,9 @@ package clustering.services;
 
 import clustering.model.structures.MyList;
 
-/** Utilidades de texto propias: validación numérica, separación por espacios y ordenamiento. */
 public final class TextUtils {
     private TextUtils() { }
 
-    /** true si el texto es un número decimal válido (signo, dígitos, punto y exponente opcionales). */
     public static boolean isNumber(String text) {
         String s = text.trim();
         int i = 0, n = s.length();

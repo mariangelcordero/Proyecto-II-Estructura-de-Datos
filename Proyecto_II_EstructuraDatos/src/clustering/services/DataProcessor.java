@@ -13,13 +13,11 @@ import clustering.model.structures.MyMatrix;
 import clustering.model.structures.MyVector;
 import java.io.IOException;
 
-/** Carga el CSV, detecta tipos y convierte los registros en vectores normalizados y ponderados. */
 public class DataProcessor implements MyIterable<DataPoint> {
     private final MyList<DataPoint> dataPoints = new MyList<>();
     private final MyList<String> headers = new MyList<>();
     private MyList<String> dimensionLabels = new MyList<>();
 
-    /** Plan de vectorización de una variable activa. */
     private static class ColumnPlan {
         int columnIndex;
         ColumnType type;
@@ -29,7 +27,6 @@ public class DataProcessor implements MyIterable<DataPoint> {
         MapaHash<Integer> indexByValue;
     }
 
-    /** Lee el CSV. Se descartan columnas sin encabezado. O(filas*columnas). */
     public void loadCsv(String path) throws IOException {
         MyList<String[]> rows = new CsvParser().parse(path);
         if (rows.size() < 2) throw new IllegalArgumentException("El CSV debe tener encabezado y al menos un registro");
@@ -56,7 +53,6 @@ public class DataProcessor implements MyIterable<DataPoint> {
         }
     }
 
-    /** Propone el tipo de cada columna: numérica, multivalor (palabras repetidas entre filas) o categórica. */
     public MyList<ColumnSetting> detectColumnSettings() {
         MyList<ColumnSetting> settings = new MyList<>();
         for (int j = 0; j < headers.size(); j++) {
@@ -82,7 +78,6 @@ public class DataProcessor implements MyIterable<DataPoint> {
         return settings;
     }
 
-    /** Usa la columna indicada como etiqueta de cada registro. */
     public void applyNameColumn(int column) {
         for (int i = 0; i < dataPoints.size(); i++) {
             DataPoint dp = dataPoints.get(i);
@@ -91,11 +86,6 @@ public class DataProcessor implements MyIterable<DataPoint> {
         }
     }
 
-    /**
-     * Vectoriza: numéricos directos (faltantes = media), categóricos one-hot, multivalor one-hot por palabra;
-     * luego normaliza cada dimensión y multiplica por el peso de su variable.
-     * O(n*D) para llenar + O(n*D) para normalizar, con D = dimensiones totales.
-     */
     public void convertToVectors() {
         Configuration cfg = Configuration.getInstance();
         if (cfg.getNormalizationStrategy() == null) throw new IllegalStateException("Seleccione una normalización");

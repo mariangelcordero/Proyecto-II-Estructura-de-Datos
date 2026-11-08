@@ -5,7 +5,6 @@ import clustering.model.strategies.DistanciaStrategy;
 import clustering.model.strategies.NormalizacionStrategy;
 import clustering.model.structures.MyList;
 
-/** Patrón Singleton: configuración global de la corrida (estrategias, variables, pesos). */
 public final class Configuration {
     private static final class Holder {
         private static final Configuration INSTANCE = new Configuration();

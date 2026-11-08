@@ -4,7 +4,6 @@ import clustering.model.iterators.MyIterable;
 import clustering.model.iterators.MyIterator;
 import clustering.model.iterators.VectorIterator;
 
-/** Vector numérico de tamaño fijo. */
 public class MyVector implements MyIterable<Double> {
     private final double[] elements;
 
