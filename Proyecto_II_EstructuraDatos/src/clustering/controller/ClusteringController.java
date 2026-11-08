@@ -47,7 +47,7 @@ public class ClusteringController {
         if (!model.isDataLoaded()) { view.showError("Primero cargue un archivo CSV."); return; }
         try {
             view.commitEdits();
-            model.configureStrategies(view.getSelectedNormalization(), view.getSelectedDistance());
+            model.configureStrategies(view.getSelectedNormalization(), view.getSelectedDistance(), view.getSelectedLinkageMethod());
             view.setWaiting(true);
             model.runClustering();
             MyTreeNode root = model.getDisplayedRoot();
@@ -58,6 +58,7 @@ public class ClusteringController {
                     + "\nDimensión del vector: " + model.getDimension()
                     + "\nNormalización: " + cfg.getNormalizationStrategy().getName()
                     + "\nDistancia: " + cfg.getDistanceStrategy().getName()
+                    + "\nMetodo de enlace: " + view.getSelectedLinkageMethod()
                     + "\nNodos del árbol: " + (2 * model.getDataPoints().size() - 1)
                     + "\nDistancia de la última fusión: " + root.getDistance()
                     + "\n\nDimensiones:\n" + dimensionList());

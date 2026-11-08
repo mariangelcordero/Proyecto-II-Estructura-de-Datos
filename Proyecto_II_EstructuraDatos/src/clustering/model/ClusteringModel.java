@@ -21,6 +21,7 @@ public class ClusteringModel {
     private MyTreeNode displayedRoot;
     private boolean vectorized;
     private boolean nameColumnWasIgnored;
+    private String linkageMethod = "Enlace Simple";
 
     public void loadCsv(String path) throws IOException {
         processor.loadCsv(path);
@@ -91,11 +92,21 @@ public class ClusteringModel {
         displayedRoot = null;
     }
 
+    public void configureStrategies(String normalizationType,
+                                    String distanceType,
+                                    String linkageMethod) {
 
-    public void configureStrategies(String normalizationType, String distanceType) {
         Configuration cfg = Configuration.getInstance();
-        cfg.setNormalizationStrategy(normalizationFactory.create(normalizationType));
-        cfg.setDistanceStrategy(distanceFactory.create(distanceType));
+
+        cfg.setNormalizationStrategy(
+                normalizationFactory.create(normalizationType)
+        );
+
+        cfg.setDistanceStrategy(
+                distanceFactory.create(distanceType)
+        );
+
+        this.linkageMethod = linkageMethod;
     }
 
     public void runClustering() {
@@ -103,7 +114,7 @@ public class ClusteringModel {
         Configuration cfg = Configuration.getInstance();
         processor.convertToVectors();
         vectorized = true;
-        clustering = new HierarchicalClustering(processor.getDataPoints(), cfg.getDistanceStrategy());
+        clustering = new HierarchicalClustering(processor.getDataPoints(), cfg.getDistanceStrategy(), linkageMethod);
         clustering.buildDistanceMatrix();
         displayedRoot = clustering.performClustering();
     }

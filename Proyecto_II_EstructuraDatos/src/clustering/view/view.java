@@ -161,6 +161,10 @@ public class view extends JFrame {
         return (String) distanciaCB.getSelectedItem();
     }
 
+    public String getSelectedLinkageMethod() {
+        return (String) metodoCB.getSelectedItem();
+    }
+
     // Mostrar el dendrograma
     public void setDendrogram(MyTreeNode root) {
         dendrogramPanel.setRoot(root);
