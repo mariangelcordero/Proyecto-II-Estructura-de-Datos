@@ -71,7 +71,7 @@ public class ClusteringController {
 
     public void onExport() {
         if (model.getDisplayedRoot() == null) { view.showError("Ejecute el clustering o cargue un JSON primero."); return; }
-        String path = view.askSaveFile("dendrogram.json");
+        String path = view.askSaveFile("dendrograma.json");
         if (path == null) return;
         try {
             model.exportDendrogram(path);
