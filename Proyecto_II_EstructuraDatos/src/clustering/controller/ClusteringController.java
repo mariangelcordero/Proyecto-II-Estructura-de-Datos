@@ -2,24 +2,20 @@ package clustering.controller;
 
 import clustering.model.ClusteringModel;
 import clustering.model.Configuration;
-import clustering.model.factories.DistanceFactory;
-import clustering.model.factories.NormalizationFactory;
 import clustering.model.structures.MyTreeNode;
-import clustering.view.MainFrame;
+import clustering.view.view;
 import javax.swing.SwingUtilities;
 
 public class ClusteringController {
     private final ClusteringModel model;
-    private MainFrame view;
+    private view view;
 
 
     public ClusteringController(ClusteringModel model) { this.model = model; }
 
     public void start() {
         SwingUtilities.invokeLater(() -> {
-            view = new MainFrame(this,
-                    new NormalizationFactory().getAvailableTypes(),
-                    new DistanceFactory().getAvailableTypes());
+            view = new view(this);
             view.setVisible(true);
         });
     }
@@ -36,7 +32,6 @@ public class ClusteringController {
             view.setSummary("Archivo: " + path + "\nRegistros: " + model.getDataPoints().size()
                     + "\nVariables: " + model.getHeaders().size()
                     + "\n\nAjuste tipos, pesos y variables ignoradas, y presione «Ejecutar clustering».");
-            view.setStatus("CSV cargado: " + model.getDataPoints().size() + " registros");
         } catch (Exception ex) {
             view.showError("No se pudo cargar el CSV: " + ex.getMessage());
         }
@@ -66,7 +61,6 @@ public class ClusteringController {
                     + "\nNodos del árbol: " + (2 * model.getDataPoints().size() - 1)
                     + "\nDistancia de la última fusión: " + root.getDistance()
                     + "\n\nDimensiones:\n" + dimensionList());
-            view.setStatus("Clustering completado");
         } catch (Exception ex) {
             view.showError("Error al ejecutar el clustering: " + ex.getMessage());
         } finally {
@@ -80,7 +74,6 @@ public class ClusteringController {
         if (path == null) return;
         try {
             model.exportDendrogram(path);
-            view.setStatus("Exportado a " + path);
         } catch (Exception ex) {
             view.showError("No se pudo exportar: " + ex.getMessage());
         }
@@ -91,7 +84,6 @@ public class ClusteringController {
         if (path == null) return;
         try {
             view.setDendrogram(model.loadDendrogram(path));
-            view.setStatus("Dendrograma cargado desde " + path);
         } catch (Exception ex) {
             view.showError("No se pudo cargar el JSON: " + ex.getMessage());
         }

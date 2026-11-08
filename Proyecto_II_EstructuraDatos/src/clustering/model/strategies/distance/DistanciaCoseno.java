@@ -22,5 +22,5 @@ public class DistanciaCoseno implements DistanciaStrategy {
         return 1 - dot / (magA * magB);
     }
 
-    @Override public String getName() { return "Cosine"; }
+    @Override public String getName() { return "Coseno"; }
 }

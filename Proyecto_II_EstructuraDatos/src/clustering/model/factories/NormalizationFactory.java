@@ -8,14 +8,14 @@ import clustering.model.strategies.normalization.NormalizacionZScore;
 public class NormalizationFactory implements StrategyFactory<NormalizacionStrategy> {
     @Override public NormalizacionStrategy create(String type) {
         switch (type.trim().toLowerCase()) {
-            case "min-max": return new NormalizacionMm();
+            case "minimo - maximo": return new NormalizacionMm();
             case "z-score": return new NormalizacionZScore();
-            case "logarithmic": return new NormalizacionLogaritmica();
+            case "logaritmica": return new NormalizacionLogaritmica();
             default: throw new IllegalArgumentException("Normalización desconocida: " + type);
         }
     }
 
     @Override public String[] getAvailableTypes() {
-        return new String[] { "Min-Max", "Z-Score", "Logarithmic" };
+        return new String[] { "Minimo - Maximo", "Z-Score", "Logaritmica" };
     }
 }

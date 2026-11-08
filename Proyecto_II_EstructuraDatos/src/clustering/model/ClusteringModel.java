@@ -13,7 +13,6 @@ import clustering.services.DendrogramReader;
 import clustering.services.HierarchicalClustering;
 import java.io.IOException;
 
-/** Fachada del modelo (MVC): orquesta carga, configuración, vectorización, clustering y archivos JSON. */
 public class ClusteringModel {
     private final DataProcessor processor = new DataProcessor();
     private final NormalizationFactory normalizationFactory = new NormalizationFactory();
@@ -99,7 +98,6 @@ public class ClusteringModel {
         cfg.setDistanceStrategy(distanceFactory.create(distanceType));
     }
 
-    /** Ejecuta vectorización + matriz de distancias + clustering. */
     public void runClustering() {
         if (!isDataLoaded()) throw new IllegalStateException("Primero cargue un archivo CSV");
         Configuration cfg = Configuration.getInstance();

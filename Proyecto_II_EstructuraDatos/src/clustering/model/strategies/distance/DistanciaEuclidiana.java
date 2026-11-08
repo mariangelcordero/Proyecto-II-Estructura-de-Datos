@@ -17,5 +17,5 @@ public class DistanciaEuclidiana implements DistanciaStrategy {
         return Math.sqrt(sum);
     }
 
-    @Override public String getName() { return "Euclidean"; }
+    @Override public String getName() { return "Euclidiana"; }
 }
