@@ -13,7 +13,7 @@ public class MyTreeNode implements MyIterable<MyTreeNode> {
     private final double distance;
     private final int leafCount;
 
-    /** Hoja. */
+    // Hoja
     public MyTreeNode(int id, String label) {
         this.id = id;
         this.label = label;
@@ -23,7 +23,7 @@ public class MyTreeNode implements MyIterable<MyTreeNode> {
         this.leafCount = 1;
     }
 
-    /** Nodo interno (fusión de dos clústeres). */
+    //  Nodo interno (fusión de dos clústeres)
     public MyTreeNode(int id, MyTreeNode left, MyTreeNode right, double distance) {
         if (left == null || right == null) throw new IllegalArgumentException("Un nodo interno requiere dos hijos");
         this.id = id;

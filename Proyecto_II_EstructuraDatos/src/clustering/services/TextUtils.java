@@ -29,7 +29,6 @@ public final class TextUtils {
 
     public static double parseNumber(String text) { return Double.parseDouble(text.trim()); }
 
-    /** Separa por espacios en blanco, descartando tokens vacíos. O(longitud). */
     public static MyList<String> splitWhitespace(String text) {
         MyList<String> tokens = new MyList<>();
         StringBuilder current = new StringBuilder();
@@ -45,7 +44,7 @@ public final class TextUtils {
         return tokens;
     }
 
-    /** Ordenamiento por mezcla (merge sort) de una lista de textos. O(k log k). */
+
     public static void sortStrings(MyList<String> list) {
         int n = list.size();
         String[] data = new String[n];
@@ -66,6 +65,5 @@ public final class TextUtils {
         for (k = lo; k < hi; k++) a[k] = tmp[k];
     }
 
-    /** Redondea a 2 decimales. */
     public static double round2(double value) { return Math.round(value * 100.0) / 100.0; }
 }
